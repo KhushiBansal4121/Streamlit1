@@ -1,6 +1,6 @@
 import streamlit as st
 !pip install yfinance
-import yfinance as yf 
+import yfinance as yf  
 
 #Image
 def image() :
