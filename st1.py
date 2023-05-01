@@ -1,5 +1,4 @@
 import streamlit as st
-!pipenv install yfinance
 import yfinance as yf  
 
 #Image
