@@ -1,2 +1,5 @@
 streamlit==1.21.0
-yfinance==0.1.54
+yfinance==0.1.54 
+pandas==2.0.1
+plotly==2.20.0
+xlrd==2.0.1
