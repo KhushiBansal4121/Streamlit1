@@ -5,6 +5,8 @@ import math
 from plotly import graph_objs as go 
 import datetime 
 from datetime import datetime as date 
+import pandas as pd
+from sklearn.linear_model import LinearRegression
 
  
 
