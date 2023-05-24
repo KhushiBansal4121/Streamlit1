@@ -14,7 +14,6 @@ st.set_page_config(
     
 )  
 
-st.balloons()
 xls = xlrd.open_workbook("Company_Names.xls")
 sh = xls.sheet_by_index(0)
 
