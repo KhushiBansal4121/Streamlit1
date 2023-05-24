@@ -50,7 +50,9 @@ def view() :
     }
     </style>
     """, unsafe_allow_html=True)
-    
+if st.sidebar.button("Logout") :
+ st.success(" Thank You . ")
+ st.stop()
 
 def tab() :
 
