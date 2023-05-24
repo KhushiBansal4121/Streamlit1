@@ -282,8 +282,48 @@ def prediction() :
     y = date.today().year 
     m = date.today().month
     dd = date.today().day
-    d = st.date_input("#### Select Date For Prediction Of Stock Price Of The Company :- " , datetime.date(y , m , dd) )
-    st.write(d)
+    prediction_date = st.date_input("#### Select Date For Prediction Of Stock Price Of The Company :- " , datetime.date(y , m , dd) )
+    st.title(prediction_date)
+    ticker_symbol = companies[company]
+    st.write(company)
+
+    if st.button("Prediction Of Stock Price . ") :
+
+    
+        # Get the historical data for the stock
+        stock_data = yf.download(ticker_symbol)
+
+        # Create a DataFrame with the "Close" prices
+        df = pd.DataFrame(stock_data['Close'])
+
+        # Add a column for the target variable, which is the future price (next day's close)
+        df['Target'] = df['Close'].shift(-1)
+
+        # Drop rows with missing values
+        df.dropna(inplace=True)
+
+        # Split the data into features (X) and target variable (y)
+        X = df.iloc[:, :-1]
+        y = df['Target']
+
+        # Train a linear regression model
+        model = LinearRegression()
+        model.fit(X, y)
+
+        # Get the last available close price
+        last_close_price = df['Close'].iloc[-1]
+
+        # Create a DataFrame with the prediction date
+        prediction_df = pd.DataFrame(index=[pd.to_datetime(prediction_date)])
+
+        # Add features to the prediction DataFrame (e.g., previous close price)
+        prediction_df['Close'] = last_close_price
+
+        # Make the prediction
+        predicted_price = model.predict(prediction_df)
+
+        st.write("The Predicted Price Is :- ")
+        st.title(predicted_price[0])
     
 def start() :
     view()
