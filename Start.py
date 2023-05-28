@@ -285,7 +285,7 @@ def prediction() :
     m = date.today().month
     dd = date.today().day
     prediction_date = st.date_input("#### Select Date For Prediction Of Stock Price Of The Company :- " , datetime.date(y , m , dd) )
-    st.write(date.today().date)
+    st.write(date.today())
     if prediction_date >= date.today() :
         st.title(prediction_date)
         ticker_symbol = companies[company]
