@@ -327,7 +327,6 @@ def prediction() :
         st.write("The Predicted Price Is :- ")
         st.title(predicted_price[0])
          
- 
     
 def start() :
     view()
