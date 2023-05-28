@@ -279,13 +279,16 @@ def data_analysis() :
     #st.plotly_chart(fig_moving_average_stocks_graph)
 
 def prediction() :
-    import datetime 
+
+    
     st.header("Prediction")
     y = date.today().year 
     m = date.today().month
     dd = date.today().day
-    prediction_date = st.date_input("#### Select Date For Prediction Of Stock Price Of The Company :- " , datetime.date(y , m , dd) 
+    prediction_date = st.date_input("#### Select Date For Prediction Of Stock Price Of The Company :- " , datetime.date(y , m , dd) )
     st.title(prediction_date)
+    
+
     ticker_symbol = companies[company]
     st.write(company)
 
@@ -326,7 +329,6 @@ def prediction() :
 
         st.write("The Predicted Price Is :- ")
         st.title(predicted_price[0])
-         
     
 def start() :
     view()
