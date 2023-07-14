@@ -9,12 +9,13 @@ import pandas as pd
 from sklearn.linear_model import LinearRegression
 
   
-@st.cache
 st.set_page_config(
     page_title = "Start" , 
     page_icon = "☑️" , 
     
 )  
+
+@st.cache 
 
 xls = xlrd.open_workbook("Company_Names.xls")
 sh = xls.sheet_by_index(0)
