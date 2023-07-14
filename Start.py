@@ -8,7 +8,7 @@ from datetime import datetime as date
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
- 
+  
  
 st.set_page_config(
     page_title = "Start" , 
