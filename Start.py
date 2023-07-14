@@ -15,7 +15,6 @@ st.set_page_config(
     
 )  
 
-@st.cache 
 
 xls = xlrd.open_workbook("Company_Names.xls")
 sh = xls.sheet_by_index(0)
