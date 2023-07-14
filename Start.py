@@ -8,6 +8,8 @@ from datetime import datetime as date
 import pandas as pd
 from sklearn.linear_model import LinearRegression
 
+  
+ 
 st.set_page_config(
     page_title = "Start" , 
     page_icon = "☑️" , 
@@ -78,10 +80,9 @@ def company_information() :
 
     st.header(company)
     data_ticker = yf.Ticker(companies[company])                                                  
-    st.write("Symbol :- \n ",data_ticker.info["symbol"])
+    st.write("Symbol :- \n ",companies[company])
     open_data = data_ticker.history(period = '1d')
     st.write("Open : \n",str(round(open_data['Open'][0],2)),"USD"," ")    
-    st.write("About :- \n ",data_ticker.info['longBusinessSummary'])
 
 def latest_stocks() :
 
@@ -221,26 +222,8 @@ def data_analysis() :
                                   dict(step="all")
                               ])
                           ))
-    st.plotly_chart(fig_moving_average)
-
-    st.subheader("Profit Margins Bar Graph")    
-   
-    data_ticker = yf.Ticker(companies[company])
-    gross_margin = data_ticker.info['grossMargins']     
-    operating_margin = data_ticker.info['operatingMargins']
-    ebidta_margin = data_ticker.info['ebitdaMargins']
-    net_margin = data_ticker.info['netIncomeToCommon'] / data_ticker.info['totalRevenue']
-
-    fig_margins = go.Figure()
-    colors = ['','','',''] # ['blue'] * 4
-    colors[0] = 'aqua'
-    colors[1] = 'burlywood' 
-    colors[2] = 'cornsilk'
-    colors[3] = 'darkturquoise'
-    fig_margins.add_trace(go.Bar(x = ["Gross Margin" , "Operating Margin" , "Ebidta Margin" , "Net Margin"] , y = [gross_margin , operating_margin , ebidta_margin , net_margin] , marker_color = colors))
-    fig_margins.layout.update(title_text = "Profit Margins ")
-    st.plotly_chart(fig_margins)    
-
+    st.plotly_chart(fig_moving_average)   
+    
     st.subheader("Moving Average With Market Price Complete V/S Time Chart")
     fig_moving_average_stocks_graph = go.Figure(data = [ go.Candlestick(
                                                                         x = df.index , 
